@@ -4,9 +4,11 @@ from django.shortcuts import render
 from django.db.models import Count
 
 from users.models import History
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url="users/login")
 def index(request):
     q = request.GET.get("q")
     context = {}
@@ -50,9 +52,10 @@ def index(request):
     return render(request=request, template_name="weather.html", context=context)
 
 
+@login_required(login_url="users/login")
 def history(request):
     data = History.objects.filter(user=request.user)
-    city_counts = History.objects.values('city').annotate(count=Count('city'))
+    city_counts = History.objects.values('city').annotate(count=Count('city')).filter(user=request.user)
     context = {
         "data": data,
         "city_counts": city_counts
