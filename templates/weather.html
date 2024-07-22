@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="forecast container bg-info">
+    <form method="GET">
+        <div class="input-group">
+            <input name="q" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-light bg-success" data-mdb-ripple-init>search</button>
+        </div>
+    </form>
+    <div class="city">City: {{ city }}</div>
+    <div class="temp">
+        <h2>Temp: {{ temp }}°C</h2>
+        <h3>Weather: {{ main }} - {{ description }}</h3>
+    </div>
+    <div class="date">
+        <h2>{{ weekday }}, {{ month }} {{ day }}</h2>
+    </div>
+</div>
+{% endblock %}

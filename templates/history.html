@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="forecast container">
+        <ul class="list-group">
+                <div class="row">
+                    <div class="col-6">
+                        {% for datum in data %}
+                            <li class="list-group-item active">City: {{ datum.city }} | {{ datum.degree|floatformat:2 }}°C</li>
+                            <li class="list-group-item">Description: {{ datum.description }}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="col-6">
+                        {% for city_count in city_counts %}
+                            <li class="list-group-item active">Searched City: {{ city_count.city }}</li>
+                            <li class="list-group-item">Number of search repeated: {{ city_count.count }}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+        </ul>
+</div>
+{% endblock %}

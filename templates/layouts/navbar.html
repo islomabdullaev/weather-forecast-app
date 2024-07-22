@@ -1,0 +1,27 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'pages:index' %}">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS603vuEwcHzwTxp58e5OSjWPGzfZ9pVof36qdt4KnXaEUr9St5RIxXrIg6t3X6u3yPeZU&usqp=CAU"
+          class="me-2"
+          height="20"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+        {% if user.is_authenticated %}
+          <small>
+            Hello, {{ user }}
+          </small>
+          <small><a href="{% url 'pages:history' %}">
+            History
+          </a></small>
+          <small><a href="{% url 'users:logout' %}">
+            Log Out
+          </a></small>
+        {% else %}
+          
+        {% endif %}
+      </a>
+    </div>
+  </nav>
